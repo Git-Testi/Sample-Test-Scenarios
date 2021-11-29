@@ -1,0 +1,11 @@
+ Volume in drive E is New Volume
+ Volume Serial Number is BA9F-8693
+
+ Directory of E:\GitCommands
+
+11/29/2021  04:03 PM    <DIR>          .
+11/29/2021  04:03 PM    <DIR>          ..
+11/29/2021  03:55 PM               477 SQL Queries.txt
+11/29/2021  04:05 PM                 0 SQL.txt
+               2 File(s)            477 bytes
+               2 Dir(s)  275,672,596,480 bytes free
