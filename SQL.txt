@@ -1,11 +1,23 @@
- Volume in drive E is New Volume
- Volume Serial Number is BA9F-8693
+JOIN QUERIES
 
- Directory of E:\GitCommands
+SELECT Products.ProductID, Customers.CustomerName, Shippers.ShipperName
+FROM ((Orders
+INNER JOIN Customers ON Products.CustomerID = Customers.CustomerID)
+INNER JOIN Shippers ON Products.ShipperID = Shippers.ShipperID);
 
-11/29/2021  04:03 PM    <DIR>          .
-11/29/2021  04:03 PM    <DIR>          ..
-11/29/2021  03:55 PM               477 SQL Queries.txt
-11/29/2021  04:05 PM                 0 SQL.txt
-               2 File(s)            477 bytes
-               2 Dir(s)  275,672,596,480 bytes free
+CREATING A STORED PROCEDURE
+
+DELIMITER $$
+CREATE PROCEDURE GetProducts()
+BEGIN
+SELECT
+Products, customerName, city 
+FROM 
+Porducts
+ORDER BY customerName;
+END$$
+DELIMITER ;
+
+CALL THE STORED PROCEDURE
+CALL GetProducts();
+
