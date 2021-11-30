@@ -1,23 +1,54 @@
-JOIN QUERIES
+1) CREATING A STORED PROCEDURE
+
+DELIMITER $$
+CREATE PROCEDURE GetProducts()
+BEGIN
+	SELECT
+	Products, customerName, city 
+	FROM 
+	Porducts
+	ORDER BY customerName;
+END $$
+DELIMITER ;
+
+CALL THE STORED PROCEDURE
+
+CALL GetProducts()
+*****************************************************************************
+2) CREATING A STORED PROCEDURE THAT  RETURNS CUSTOMER NAMES BELONGING TO A CITY 
+SPECIFIED BY AN INPUT PARAMETER
+
+DELIMITER $$
+CREATE PROCEDURE GetCustomerByCity(
+	IN cityname VARCHAR(20)
+)
+BEGIN
+	SELECT *
+	FROM Customers
+	WHERE City = cityname;
+END $$
+
+DELIMITER ;
+******************************************************************************
+3)CREATING SQL STATEMENTS THAT SELECT ORDERS WITH CUSTOMER AND SHIPPER TABLES
 
 SELECT Products.ProductID, Customers.CustomerName, Shippers.ShipperName
 FROM ((Orders
 INNER JOIN Customers ON Products.CustomerID = Customers.CustomerID)
 INNER JOIN Shippers ON Products.ShipperID = Shippers.ShipperID);
+*****************************************************************************
+4) CREATING A TABLE WITH MYSQL CONSTRAINTS
 
-CREATING A STORED PROCEDURE
-
-DELIMITER $$
-CREATE PROCEDURE GetProducts()
-BEGIN
-SELECT
-Products, customerName, city 
-FROM 
-Porducts
-ORDER BY customerName;
-END$$
-DELIMITER ;
-
-CALL THE STORED PROCEDURE
-CALL GetProducts();
+CREATE TABLE Students(
+    StudentID int NOT NULL AUTO_INCREMENT,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255) NOT NULL,
+    Age int,
+    CHECK (Age>=18),
+    Course varchar(255),
+    CourseID int NOT NULL,
+    ApplicationDate date DEFAULT CURRENT_DATE()
+    PRIMARY KEY (StudentID)
+);
+*****************************************************************************
 
